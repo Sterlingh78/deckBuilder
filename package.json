@@ -1,0 +1,23 @@
+{
+  "name": "deckbuilder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tailwind:css": "postcss client/src/input.css -o client/src/output.css",
+    "start": "npm run tailwind:css && nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.13",
+    "daisyui": "^2.42.1",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "postcss": "^8.4.19",
+    "postcss-cli": "^10.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
