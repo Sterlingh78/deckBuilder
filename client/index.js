@@ -8,6 +8,7 @@ document.querySelectorAll(".deckDiv").forEach((el) => {
   const deckName = el.childNodes[1]
   const editBtn = el.childNodes[3]
   const trashBtn = el.childNodes[5]
+  const parent = deckName.parentNode
 
   el.addEventListener("mouseenter", (event) => {
     deckName.classList.add("w-4/6")
@@ -32,6 +33,21 @@ document.querySelectorAll(".deckDiv").forEach((el) => {
     // make call to API to delete deck from database
   })
   editBtn.addEventListener("click", (event) => {
-    // make call to API to edit deck name
+    const inputString = `<input 
+    type="text"
+    placeholder="Type here"
+    class="editInput input input-bordered input-md w-full"
+    />`
+    deckName.remove()
+    parent.innerHTML = inputString
+
+    const editInput = document.querySelector(".editInput")
+    editInput.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        console.log(editInput.value)
+        // use refresh deck list function, I put a whole page refresh as a placeholder
+        location.reload()
+      }
+    })
   })
 })

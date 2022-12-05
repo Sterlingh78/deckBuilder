@@ -2392,6 +2392,24 @@ html {
 .btn-secondary:focus-visible {
   outline: 2px solid hsl(var(--s));
 }
+.btn-error {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--erc, var(--nc)) / var(--tw-text-opacity));
+}
+.btn-error:hover,
+    .btn-error.btn-active {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--er) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--er) / var(--tw-bg-opacity));
+}
+.btn-error:focus-visible {
+  outline: 2px solid hsl(var(--er));
+}
 .btn.glass:hover,
     .btn.glass.btn-active {
   --glass-opacity: 25%;
@@ -2697,6 +2715,13 @@ html {
 .input-primary:focus {
   outline: 2px solid hsl(var(--p));
 }
+.input-secondary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--s) / var(--tw-border-opacity));
+}
+.input-secondary:focus {
+  outline: 2px solid hsl(var(--s));
+}
 .input-disabled,
   .input[disabled] {
   cursor: not-allowed;
@@ -2975,6 +3000,14 @@ html {
   width: 4rem;
   padding: 0px;
 }
+.input-md {
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 2;
+}
 .btn-group .btn:not(:first-child):not(:last-child), .btn-group.btn-group-horizontal .btn:not(:first-child):not(:last-child) {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -3025,6 +3058,9 @@ html {
 .relative {
   position: relative;
 }
+.right-0 {
+  right: 0px;
+}
 .top-10 {
   top: 2.5rem;
 }
@@ -3045,6 +3081,9 @@ html {
 }
 .mt-1 {
   margin-top: 0.25rem;
+}
+.ml-2 {
+  margin-left: 0.5rem;
 }
 .mt-2 {
   margin-top: 0.5rem;
@@ -3117,6 +3156,9 @@ html {
 }
 .rounded-xl {
   border-radius: 0.75rem;
+}
+.border-hidden {
+  border-style: hidden;
 }
 .bg-base-200 {
   --tw-bg-opacity: 1;
