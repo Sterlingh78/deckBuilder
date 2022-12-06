@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Card Detail</title>
+    <link rel="stylesheet" href="src/output.css" />
+  </head>
+  <body>
+    <main>
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a href="index.html" class="btn btn-ghost normal-case text-xl"
+            >deckBuilder</a
+          >
+        </div>
+        <div class="flex">
+          <a href="deck.html">
+            <button class="btn btn-secondary">Back to Deck</button>
+          </a>
+        </div>
+      </div>
+      <div class="bg-base-200 w-screen h-screen pt-4">
+        <div class="mx-auto w-1/2 card card-side bg-base-100 shadow-xl">
+          <figure class="w-80 m-4">
+            <img class="rounded-xl" src="src/img/urza.jpeg" alt="Movie" />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">New movie is released!</h2>
+            <p>Click the button to watch on Jetflix app.</p>
+            <div>
+              <button class="btn btn-primary">Buy</button>
+              <button class="btn btn-primary">Scryfall</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="p-2 footer footer-center bg-base-300 text-base-content bottom-0"
+      >
+        <div class="flex">
+          <p>Copyright © 2022 - Sterling Holt</p>
+          <p>&bull;</p>
+          <p>
+            Card Data Provided By
+            <a href="https://scryfall.com/docs/api">Scryfall</a>
+          </p>
+        </div>
+      </footer>
+    </main>
+    <script src="card.js"></script>
+  </body>
+</html>

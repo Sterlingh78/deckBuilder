@@ -9,185 +9,245 @@
   </head>
   <body>
     <main>
-      <div class="addAlert alert alert-success shadow-lg hidden mt-2">
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="stroke-current flex-shrink-0 h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
+      <div class="navbar bg-base-100">
+        <div class="flex-1">
+          <a href="index.html" class="btn btn-ghost normal-case text-xl"
+            >deckBuilder</a
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-          <span>Card Added!</span>
+        </div>
+        <div class="flex">
+          <a href="deck.html">
+            <button class="btn btn-secondary">Back to Deck</button>
+          </a>
         </div>
       </div>
-      <button class="btn btn-primary ml-4">Back To Deck</button>
-      <input
-        type="text"
-        placeholder="Card search..."
-        class="input input-bordered input-primary w-96 ml-4 mt-4"
-      />
+      <div class="w-screen h-screen bg-base-200">
+        <div class="addAlert alert alert-success shadow-lg hidden mt-2">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="stroke-current flex-shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Card Added!</span>
+          </div>
+        </div>
 
-      <div class="flex flex-wrap bg-base-200 drop-shadow-lg m-4 justify-center">
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+        <input
+          type="text"
+          placeholder="Card search..."
+          class="input input-bordered input-primary w-96 ml-4 mt-4"
+        />
+
+        <div
+          class="flex flex-wrap bg-base-100 drop-shadow-lg m-4 justify-center rounded-xl"
+        >
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
-        </div>
-        <div class="w-64 m-2 relative">
-          <a href="">
-            <img src="src/img/urza.jpeg" alt="Card" class="rounded-xl w-full" />
-          </a>
-          <button
-            class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              fill="currentColor"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-64 m-2 relative">
+            <a href="">
+              <img
+                src="src/img/urza.jpeg"
+                alt="Card"
+                class="rounded-xl w-full"
+              />
+            </a>
+            <button
+              class="addCard btn btn-square btn-secondary btn-outline absolute top-10 left-6"
             >
-              <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                fill="currentColor"
+              >
+                <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
+      <footer
+        class="p-2 footer footer-center bg-base-300 text-base-content bottom-0"
+      >
+        <div class="flex">
+          <p>Copyright © 2022 - Sterling Holt</p>
+          <p>&bull;</p>
+          <p>
+            Card Data Provided By
+            <a href="https://scryfall.com/docs/api">Scryfall</a>
+          </p>
+        </div>
+      </footer>
     </main>
     <script src="search.js"></script>
   </body>

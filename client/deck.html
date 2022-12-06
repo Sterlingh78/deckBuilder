@@ -13,14 +13,18 @@
         <input id="my-drawer" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content">
           <!-- Page content here -->
-          <div class="bg-base-200 pl-56 pt-10">
-            <label for="my-drawer" class="btn btn-secondary drawer-button m-1"
-              >Deck Details</label
-            >
-            <a href="search.html">
-            <label class="btn btn-secondary m-1">Add Cards</label>
-            </a>
+          <div class="navbar bg-base-100">
+            <div class="flex-1">
+              <a class="btn btn-ghost normal-case text-xl">deckBuilder</a>
+            </div>
+            <div class="flex">
+              <label for="my-drawer" class="btn btn-secondary drawer-button">Deck Details</label>
+              <a href="search.html">
+              <button class="btn btn-secondary ml-2">Add Cards</button>
+              </a>
+            </div>
           </div>
+          
           <div class="hero min-h-screen bg-base-200">
             <div class="grid grid-cols-2">
               <div class="m-2">
@@ -2129,7 +2133,7 @@
         <div class="drawer-side">
           <label for="my-drawer" class="drawer-overlay"></label>
           <div class="menu p-4 w-80 bg-base-100 text-base-content">
-            <img src="./src/img/urza.jpeg" />
+            <img class="rounded-xl" src="./src/img/urza.jpeg" />
             <h1 class="text-2xl font-bold m-2">Urza, Lord Protector</h1>
 
             <p class="text-1xl font-bold m-2">Cards in Deck: 100</p>
@@ -2152,6 +2156,18 @@
           </div>
         </div>
       </div>
+      <footer
+      class="p-2 footer footer-center bg-base-300 text-base-content bottom-0"
+    >
+      <div class="flex">
+        <p>Copyright © 2022 - Sterling Holt</p>
+        <p>&bull;</p>
+        <p>
+          Card Data Provided By
+          <a href="https://scryfall.com/docs/api">Scryfall</a>
+        </p>
+      </div>
+    </footer>
     </main>
     <script src="deck.js"></script>
   </body>
