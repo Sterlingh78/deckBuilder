@@ -3152,6 +3152,9 @@ html {
 .card-normal .card-title {
   margin-bottom: 0.75rem;
 }
+.fixed {
+  position: fixed;
+}
 .absolute {
   position: absolute;
 }

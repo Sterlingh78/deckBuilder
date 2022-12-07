@@ -9,3 +9,6 @@ document.querySelectorAll(".cardDiv").forEach((el) => {
     trashBtn.classList.add("hidden")
   })
 })
+
+const deckID = localStorage.getItem("currentDeck")
+console.log(deckID)

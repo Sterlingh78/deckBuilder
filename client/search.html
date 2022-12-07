@@ -9,19 +9,20 @@
   </head>
   <body>
     <main>
-      <div class="navbar bg-base-100">
-        <div class="flex-1">
-          <a href="index.html" class="btn btn-ghost normal-case text-xl"
-            >deckBuilder</a
-          >
+      <div class="bg-base-200 min-w-screen min-h-screen">
+        <div class="navbar bg-base-100">
+          <div class="flex-1">
+            <a href="index.html" class="btn btn-ghost normal-case text-xl"
+              >deckBuilder</a
+            >
+          </div>
+          <div class="flex">
+            <a href="deck.html">
+              <button class="btn btn-secondary">Back to Deck</button>
+            </a>
+          </div>
         </div>
-        <div class="flex">
-          <a href="deck.html">
-            <button class="btn btn-secondary">Back to Deck</button>
-          </a>
-        </div>
-      </div>
-      <div class="w-screen h-screen bg-base-200">
+
         <div class="addAlert alert alert-success shadow-lg hidden mt-2">
           <div>
             <svg
@@ -44,13 +45,16 @@
         <input
           type="text"
           placeholder="Card search..."
-          class="input input-bordered input-primary w-96 ml-4 mt-4"
+          class="searchInput input input-bordered input-primary w-96 ml-4 mt-4"
         />
+        <button class="searchBtn btn btn-primary ml-2">Search</button>
 
         <div
-          class="flex flex-wrap bg-base-100 drop-shadow-lg m-4 justify-center rounded-xl"
+          class="cardContainer flex flex-wrap bg-base-100 drop-shadow-lg m-4 justify-center rounded-xl"
         >
-          <div class="w-64 m-2 relative">
+          <h2 class="text-1xl font-bold m-2">Search for Cards by Name</h2>
+          <!--
+          <div class="cardDiv w-64 m-2 relative">
             <a href="">
               <img
                 src="src/img/urza.jpeg"
@@ -233,21 +237,22 @@
                 <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
               </svg>
             </button>
-          </div>
+          </div> -->
         </div>
+
+        <footer
+          class="p-2 footer footer-center bg-base-300 text-base-content bottom-0 fixed"
+        >
+          <div class="flex">
+            <p>Copyright © 2022 - Sterling Holt</p>
+            <p>&bull;</p>
+            <p>
+              Card Data Provided By
+              <a href="https://scryfall.com/docs/api">Scryfall</a>
+            </p>
+          </div>
+        </footer>
       </div>
-      <footer
-        class="p-2 footer footer-center bg-base-300 text-base-content bottom-0"
-      >
-        <div class="flex">
-          <p>Copyright © 2022 - Sterling Holt</p>
-          <p>&bull;</p>
-          <p>
-            Card Data Provided By
-            <a href="https://scryfall.com/docs/api">Scryfall</a>
-          </p>
-        </div>
-      </footer>
     </main>
     <script src="search.js"></script>
   </body>

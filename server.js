@@ -31,6 +31,29 @@ async function getDeckList(res) {
   }
 }
 
+// Scryfall API Calls
+
+app.post("/searchCards/", async (req, res) => {
+  const query = req.body.query
+  searchCards(query).then((data) => {
+    res.json(data)
+  })
+})
+
+async function searchCards(query) {
+  try {
+    const response = await fetch(
+      `https://api.scryfall.com/cards/search?order=name&q=${query}`
+    )
+    results = await response.json()
+    return results
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+// Page Build and DB
+
 app.get("/getDeckList", (req, res) => {
   getDeckList(res)
 })

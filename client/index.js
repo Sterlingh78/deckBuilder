@@ -112,7 +112,8 @@ async function showDeckList(deckList) {
     })
     deckName.addEventListener("click", (event) => {
       // pass data via URL and navigate to deck list page
-      window.location.href = `deck.html?id=${parent.id}`
+      localStorage.setItem("currentDeck", deckName.parentNode.id)
+      window.location.href = `deck.html`
     })
     trashBtn.addEventListener("click", (event) => {
       // make call to API to delete deck from database
