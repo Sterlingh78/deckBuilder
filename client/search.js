@@ -43,9 +43,10 @@ function showCards(cardList) {
     } else {
       imageURL = "./src/img/urza.jpeg"
     }
-    let cardString = `<div id="${card.id}" class="cardDiv w-64 m-2 relative">
+    let cardString = `<div class="cardDiv w-64 m-2 relative">
       <a>
         <img
+          id="${card.id}"
           src="${imageURL}"
           alt="Card"
           class="cardImg rounded-xl w-full"
@@ -85,12 +86,29 @@ function showCards(cardList) {
   document.querySelectorAll(".cardDiv").forEach((el) => {
     //const cardImage = el.childNodes[1]
     const cardBtn = el.childNodes[3]
+    const deckID = localStorage.getItem("currentDeck")
 
     el.addEventListener("mouseenter", (event) => {
       cardBtn.classList.remove("hidden")
     })
     el.addEventListener("mouseleave", (event) => {
       cardBtn.classList.add("hidden")
+    })
+    el.addEventListener("click", (event) => {
+      fetch("/addCard", {
+        method: "POST",
+        body: JSON.stringify({
+          deckID: `${deckID}`,
+          cardID: `${event.target.id}`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((addedCard) => {
+          console.log(addedCard)
+        })
     })
   })
 }

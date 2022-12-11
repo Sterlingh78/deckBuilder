@@ -71,6 +71,12 @@ app.post("/addNewDeck", async (req, res) => {
   getDeckList(res)
 })
 
+app.post("/addCard", async (req, res) => {
+  //const deckObj = await deck.findOne({ id: req.body.deckID })
+
+  console.log(req.body.cardID, req.body.deckID)
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -1,6 +1,7 @@
 document.querySelectorAll(".cardDiv").forEach((el) => {
   const cardName = el.childNodes[1]
   const trashBtn = el.childNodes[5]
+  //const deckID = localStorage.getItem("currentDeck")
 
   el.addEventListener("mouseenter", (event) => {
     trashBtn.classList.remove("hidden")
@@ -9,6 +10,3 @@ document.querySelectorAll(".cardDiv").forEach((el) => {
     trashBtn.classList.add("hidden")
   })
 })
-
-const deckID = localStorage.getItem("currentDeck")
-console.log(deckID)
