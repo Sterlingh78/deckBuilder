@@ -1,13 +1,3 @@
-const addAlert = document.querySelector(".addAlert")
-document.querySelectorAll(".addCard").forEach((el) => {
-  el.addEventListener("click", (event) => {
-    addAlert.classList.remove("hidden")
-    setTimeout(() => {
-      addAlert.classList.add("hidden")
-    }, 2000)
-  })
-})
-
 const searchInput = document.querySelector(".searchInput")
 const searchBtn = document.querySelector(".searchBtn")
 
@@ -23,7 +13,7 @@ searchBtn.addEventListener("click", async (event) => {
   })
     .then((res) => res.json())
     .then((cardObj) => {
-      console.log(cardObj.data)
+      //console.log(cardObj.data)
       showCards(cardObj.data)
     })
 })
@@ -31,6 +21,7 @@ searchBtn.addEventListener("click", async (event) => {
 // Page Build
 
 function showCards(cardList) {
+  console.log(cardList)
   const cardContainer = document.querySelector(".cardContainer")
   cardContainer.innerHTML = ""
 
@@ -40,20 +31,21 @@ function showCards(cardList) {
     let imageURL
     if (card.image_uris) {
       imageURL = card.image_uris.normal
+    } else if (card.card_faces) {
+      imageURL = card.card_faces[0].image_uris.normal
     } else {
       imageURL = "./src/img/urza.jpeg"
     }
-    let cardString = `<div class="cardDiv w-64 m-2 relative">
-      <a>
+    let cardString = `<div class="cursor-pointer cardDiv w-64 m-2 relative">
+      <a href="card.html">
         <img
-          id="${card.id}"
           src="${imageURL}"
           alt="Card"
           class="cardImg rounded-xl w-full"
         />
       </a>
       <button
-        class="addCard btn btn-square btn-secondary btn-outline border-hidden absolute top-10 left-6 hidden"
+      id="${card.id}" class="addCard btn btn-square btn-secondary btn-outline border-hidden absolute top-10 left-6 hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -72,17 +64,6 @@ function showCards(cardList) {
   }
   cardContainer.innerHTML = cardStrings
 
-  const addAlert = document.querySelector(".addAlert")
-  const cardImg = document.querySelector(".cardImg")
-  document.querySelectorAll(".addCard").forEach((el) => {
-    el.addEventListener("click", (event) => {
-      addAlert.classList.remove("hidden")
-      setTimeout(() => {
-        addAlert.classList.add("hidden")
-      }, 2000)
-    })
-  })
-
   document.querySelectorAll(".cardDiv").forEach((el) => {
     //const cardImage = el.childNodes[1]
     const cardBtn = el.childNodes[3]
@@ -95,11 +76,15 @@ function showCards(cardList) {
       cardBtn.classList.add("hidden")
     })
     el.addEventListener("click", (event) => {
+      localStorage.setItem("currentCard", cardBtn.id)
+    })
+    cardBtn.addEventListener("click", (event) => {
+      console.log(event.target)
       fetch("/addCard", {
         method: "POST",
         body: JSON.stringify({
           deckID: `${deckID}`,
-          cardID: `${event.target.id}`,
+          cardID: `${cardBtn.id}`,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -109,6 +94,13 @@ function showCards(cardList) {
         .then((addedCard) => {
           console.log(addedCard)
         })
+
+      // Toggle alert Div
+      const addAlert = document.querySelector(".addAlert")
+      addAlert.classList.remove("hidden")
+      setTimeout(() => {
+        addAlert.classList.add("hidden")
+      }, 2000)
     })
   })
 }

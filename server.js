@@ -52,10 +52,27 @@ async function searchCards(query) {
   }
 }
 
+async function searchOneCard(cardID) {
+  try {
+    const response = await fetch(`https://api.scryfall.com/cards/${cardID}`)
+    card = await response.json()
+    return card
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 // Page Build and DB
 
 app.get("/getDeckList", (req, res) => {
   getDeckList(res)
+})
+
+app.post("/getCard", async (req, res) => {
+  const cardID = req.body.cardID
+  await searchOneCard(cardID).then((card) => {
+    res.json(card)
+  })
 })
 
 app.post("/addNewDeck", async (req, res) => {
@@ -72,9 +89,31 @@ app.post("/addNewDeck", async (req, res) => {
 })
 
 app.post("/addCard", async (req, res) => {
-  //const deckObj = await deck.findOne({ id: req.body.deckID })
+  const deckID = req.body.deckID
+  const cardID = req.body.cardID
+  //console.log(deckID, cardID)
 
-  console.log(req.body.cardID, req.body.deckID)
+  //Query for card
+  try {
+    // Query for deck
+    const deckObj = await deck.findOne({ id: deckID })
+    //console.log(deckObj)
+
+    // Push new card
+    await searchOneCard(cardID).then((card) => {
+      deckObj.deckList.push(card)
+    })
+
+    // Save deck
+    try {
+      newDeck = await deckObj.save()
+      console.log(deckObj.deckList)
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 app.listen(port, () => {
@@ -84,13 +123,18 @@ app.listen(port, () => {
 app.put("/editDeck/", async (req, res) => {
   const placeholder = req.body.placeholder.toUpperCase()
   const value = req.body.value
+  let newDeck
   console.log(placeholder, value)
 
   const deckObj = await deck.findOne({ name: placeholder })
 
   deckObj.name = value.toUpperCase()
 
-  let newDeck = await deckObj.save()
+  try {
+    newDeck = await deckObj.save()
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
   console.log(newDeck)
 
   getDeckList(res)
