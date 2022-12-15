@@ -1,11 +1,39 @@
 function showCards(deck) {
   const deckList = deck.deckList
-  console.log(deckList)
+  //console.log(deckList)
   let forestCount = 0
   let plainsCount = 0
   let mountainCount = 0
   let islandCount = 0
   let swampCount = 0
+
+  // populate commander and deck details
+  function showDetails(deck) {
+    console.log(deck.commander)
+    const drawer = document.querySelector(".menu")
+    let imageURL
+    let drawerString = ``
+
+    if (deck.commander.image_uris) {
+      imageURL = deck.commander.image_uris.normal
+    } else if (deck.commander.card_faces) {
+      imageURL = deck.commander.card_faces[0].image_uris.normal
+    }
+    if (deck.commander.name) {
+      let cardCount = deck.deckList.length + 1
+      drawerString = `<img class="rounded-xl" src="${imageURL}" />
+      <h1 class="text-2xl font-bold m-2">${deck.commander.name}</h1>
+      <p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p><div class="flex">
+      <button class="btn btn-outline btn-success ml-1 w-1/2">
+    $369</button>
+      <button class="btn btn-primary ml-1 w-1/2">Export Deck</button></div>`
+    } else {
+      let cardCount = deck.deckList.length
+      drawerString = `<h1 class="text-2xl font-bold m-2">Add Commander to See Stats</h1><p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p>`
+    }
+    drawer.innerHTML = drawerString
+  }
+  showDetails(deck)
 
   // Sort cards into categories
 
@@ -95,7 +123,7 @@ function showCards(deck) {
       categoryString += cardString
     }
     container.innerHTML = categoryString
-    console.log(container.innerHTML == "")
+    //console.log(container.innerHTML == "")
     if (!container.innerHTML == "") {
       card.classList.remove("hidden")
     } else {

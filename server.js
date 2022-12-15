@@ -83,6 +83,23 @@ app.post("/getCards", async (req, res) => {
   res.json(deckObj)
 })
 
+app.post("/addCommander", async (req, res) => {
+  const deckID = req.body.deckID
+  const cardID = req.body.cardID
+  const deckObj = await deck.findOne({ _id: deckID })
+
+  await searchOneCard(cardID).then((card) => {
+    deckObj.commander = card
+  })
+
+  try {
+    await deckObj.save()
+    res.json(deckObj.commander)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+})
+
 app.post("/addNewDeck", async (req, res) => {
   const newDeck = new deck({
     name: req.body.deckName.toUpperCase(),

@@ -1,17 +1,20 @@
 function showCardData(card) {
-  console.log(card)
+  //console.log(card)
   let imageURL
-  let cardString
-  let commanderBtn = ``
+  let cardString = ``
+  let price = ``
+  let priceBtn = ``
+  let commanderBtnString = ``
   let cardText = ""
   let tcgURL = ""
   let scryfallURL = ""
 
+  // check if card can be commander
   if (
     card.type_line.includes("Legendary") &&
     card.type_line.includes("Creature")
   ) {
-    commanderBtn = `<a href="${scryfallURL}"><button class="commander btn btn-secondary">Make Commander</button>`
+    commanderBtnString = `<button class="commander btn btn-primary">Set Commander</button>`
   }
   if (card.oracle_text) {
     cardText = card.oracle_text
@@ -21,6 +24,11 @@ function showCardData(card) {
   }
   if (card.scryfall_uri) {
     scryfallURL = card.scryfall_uri
+  }
+  // get card price and make button
+  if (card.prices.usd) {
+    price = card.prices.usd
+    priceBtn = `<a href="${tcgURL}"><button class="btn btn-success btn-outline">$${price}</button></a>`
   }
   if (card.image_uris) {
     imageURL = card.image_uris.normal
@@ -33,9 +41,9 @@ function showCardData(card) {
       <h2 class="card-title">${card.name}</h2>
       <p>${cardText}</p>
       <div>
-        <a href="${tcgURL}"><button class="btn btn-primary">Buy</button></a>
+        ${priceBtn}
         <a href="${scryfallURL}"><button class="btn btn-primary">Scryfall</button></a>
-        ${commanderBtn}
+        ${commanderBtnString}
       </div>
     </div>
   </div>`
@@ -62,15 +70,36 @@ function showCardData(card) {
       <div>
         <a href="${tcgURL}"><button class="btn btn-primary">Buy</button></a>
         <a href="${scryfallURL}"><button class="btn btn-primary">Scryfall</button></a>
-        ${commanderBtn}
+        ${commanderBtnString}
       </div>
     </div>
   </div>`
-  } else {
-    imageURL = "./src/img/urza.jpeg"
   }
   const container = document.querySelector(".cardContainer")
   container.innerHTML = cardString
+
+  const commanderBtn = document.querySelector(".commander")
+
+  if (commanderBtn) {
+    commanderBtn.addEventListener("click", (event) => {
+      const deckID = localStorage.getItem("currentDeck")
+      const cardID = localStorage.getItem("currentCard")
+      fetch("/addCommander", {
+        method: "POST",
+        body: JSON.stringify({
+          deckID: `${deckID}`,
+          cardID: `${cardID}`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((addedCommander) => {
+          console.log(addedCommander)
+        })
+    })
+  }
 }
 
 async function showCard() {
@@ -87,7 +116,7 @@ async function showCard() {
   })
     .then((res) => res.json())
     .then((card) => {
-      console.log(card)
+      //console.log(card)
       showCardData(card)
     })
 }
