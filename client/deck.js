@@ -1,6 +1,11 @@
 function showCards(deck) {
   const deckList = deck.deckList
   console.log(deckList)
+  let forestCount = 0
+  let plainsCount = 0
+  let mountainCount = 0
+  let islandCount = 0
+  let swampCount = 0
 
   // Sort cards into categories
 

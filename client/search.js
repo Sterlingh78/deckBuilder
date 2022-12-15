@@ -1,5 +1,30 @@
 const searchInput = document.querySelector(".searchInput")
 const searchBtn = document.querySelector(".searchBtn")
+const landBtn = document.querySelector(".landBtn")
+
+landBtn.addEventListener("click", (event) => {
+  const modal = document.querySelector(".addLand")
+  const landInput = document.querySelector(".landInput")
+  const deckID = localStorage.getItem("currentDeck")
+
+  modal.classList.remove("modal-open")
+
+  fetch("/addLands", {
+    method: "POST",
+    body: JSON.stringify({
+      deckID: `${deckID}`,
+      cardID: `${modal.id}`,
+      count: `${landInput.value}`,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((addedCard) => {
+      console.log(addedCard)
+    })
+})
 
 searchBtn.addEventListener("click", async (event) => {
   fetch(`/searchCards/`, {
@@ -37,13 +62,13 @@ function showCards(cardList) {
       imageURL = "./src/img/urza.jpeg"
     }
     let cardString = `<div class="cursor-pointer cardDiv w-64 m-2 relative">
-      <a href="card.html">
+    <a href='card.html'>
         <img
           src="${imageURL}"
           alt="Card"
           class="cardImg rounded-xl w-full"
         />
-      </a>
+    </a>
       <label
       id="${card.id}" for="my-modal-4" class="addCard btn btn-square btn-secondary btn-outline border-hidden absolute top-10 left-6 hidden"
       >
@@ -79,6 +104,14 @@ function showCards(cardList) {
       localStorage.setItem("currentCard", cardBtn.id)
     })
     cardBtn.addEventListener("click", (event) => {
+      for (const card of cardList) {
+        if (cardBtn.id == card.id && card.type_line.includes("Basic Land")) {
+          const modal = document.querySelector(".addLand")
+          modal.id = `${cardBtn.id}`
+          modal.classList.add("modal-open")
+          return
+        }
+      }
       console.log(event.target)
       fetch("/addCard", {
         method: "POST",

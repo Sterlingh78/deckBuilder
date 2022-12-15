@@ -124,6 +124,41 @@ app.post("/addCard", async (req, res) => {
   }
 })
 
+app.post("/addLands", async (req, res) => {
+  const deckID = req.body.deckID
+  const cardID = req.body.cardID
+  const count = req.body.count
+
+  try {
+    // Query for deck
+    const deckObj = await deck.findOne({ _id: deckID })
+
+    // Push new card
+    await searchOneCard(cardID).then((card) => {
+      deckObj.deckList.push({
+        name: `${count} ${card.name}`,
+        id: cardID,
+        type_line: "Land",
+      })
+    })
+
+    // Save deck
+    try {
+      await deckObj.save()
+
+      for (const card of deckObj.deckList) {
+        if (card.id == cardID) {
+          res.json(card)
+        }
+      }
+    } catch (err) {
+      res.status(400).json({ message: err.message })
+    }
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 app.put("/editDeck/", async (req, res) => {
   const placeholder = req.body.placeholder.toUpperCase()
   const value = req.body.value
