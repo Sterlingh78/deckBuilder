@@ -2,10 +2,17 @@ function showCardData(card) {
   console.log(card)
   let imageURL
   let cardString
+  let commanderBtn = ``
   let cardText = ""
   let tcgURL = ""
   let scryfallURL = ""
 
+  if (
+    card.type_line.includes("Legendary") &&
+    card.type_line.includes("Creature")
+  ) {
+    commanderBtn = `<a href="${scryfallURL}"><button class="commander btn btn-secondary">Make Commander</button>`
+  }
   if (card.oracle_text) {
     cardText = card.oracle_text
   }
@@ -28,6 +35,7 @@ function showCardData(card) {
       <div>
         <a href="${tcgURL}"><button class="btn btn-primary">Buy</button></a>
         <a href="${scryfallURL}"><button class="btn btn-primary">Scryfall</button></a>
+        ${commanderBtn}
       </div>
     </div>
   </div>`
@@ -54,6 +62,7 @@ function showCardData(card) {
       <div>
         <a href="${tcgURL}"><button class="btn btn-primary">Buy</button></a>
         <a href="${scryfallURL}"><button class="btn btn-primary">Scryfall</button></a>
+        ${commanderBtn}
       </div>
     </div>
   </div>`

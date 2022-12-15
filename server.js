@@ -75,6 +75,14 @@ app.post("/getCard", async (req, res) => {
   })
 })
 
+app.post("/getCards", async (req, res) => {
+  const deckID = req.body.deckID
+  const deckObj = await deck.findOne({ _id: deckID })
+  console.log(deckObj)
+
+  res.json(deckObj)
+})
+
 app.post("/addNewDeck", async (req, res) => {
   const newDeck = new deck({
     name: req.body.deckName.toUpperCase(),
@@ -96,7 +104,7 @@ app.post("/addCard", async (req, res) => {
   //Query for card
   try {
     // Query for deck
-    const deckObj = await deck.findOne({ id: deckID })
+    const deckObj = await deck.findOne({ _id: deckID })
     //console.log(deckObj)
 
     // Push new card
@@ -114,10 +122,6 @@ app.post("/addCard", async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
 })
 
 app.put("/editDeck/", async (req, res) => {
@@ -154,4 +158,28 @@ app.delete("/deleteDeck/:deckName", async (req, res) => {
     })
 
   getDeckList(res)
+})
+
+app.post("/deleteCard", async (req, res) => {
+  const deckID = req.body.deckID
+  const cardID = req.body.cardID
+  const deckObj = await deck.findOne({ _id: deckID })
+  let cardDeck = deckObj.deckList
+
+  for (let i = 0; i < cardDeck.length; i++) {
+    if (cardDeck[i].id == cardID) {
+      cardDeck.splice(i, 1)
+    }
+  }
+
+  try {
+    await deckObj.save()
+  } catch (err) {
+    res.status(400).json({ message: err.message })
+  }
+  res.json(deckObj)
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
 })

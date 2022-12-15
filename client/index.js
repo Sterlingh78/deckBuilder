@@ -28,8 +28,8 @@ async function showDeckList(deckList) {
 </div>`
 
   for (const deck of deckList) {
-    const deckString = `<div class="deckDiv flex" id="${deck._id}">
-    <button class="deckName btn btn-block">${deck.name}</button>
+    const deckString = `<div class="deckDiv flex">
+    <button id="${deck._id}" class="deckName btn btn-block">${deck.name}</button>
     <button class="editBtn btn btn-square btn-outline ml-1 hidden">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -73,19 +73,21 @@ async function showDeckList(deckList) {
 
   addBtn.addEventListener("click", (event) => {
     // take input from user to add new deck name. Make API call to make new deck, then display all decks from response
-    fetch("/addNewDeck", {
-      method: "POST",
-      body: JSON.stringify({
-        deckName: `${newDeckInput.value}`,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((deckList) => {
-        showDeckList(deckList)
+    if (newDeckInput.value !== "") {
+      fetch("/addNewDeck", {
+        method: "POST",
+        body: JSON.stringify({
+          deckName: `${newDeckInput.value}`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
+        .then((res) => res.json())
+        .then((deckList) => {
+          showDeckList(deckList)
+        })
+    }
   })
 
   document.querySelectorAll(".deckDiv").forEach((el) => {
@@ -112,7 +114,8 @@ async function showDeckList(deckList) {
     })
     deckName.addEventListener("click", (event) => {
       // pass data via URL and navigate to deck list page
-      localStorage.setItem("currentDeck", deckName.parentNode.id)
+      localStorage.clear()
+      localStorage.setItem("currentDeck", deckName.id)
       window.location.href = `deck.html`
     })
     trashBtn.addEventListener("click", (event) => {

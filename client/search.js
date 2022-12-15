@@ -44,8 +44,8 @@ function showCards(cardList) {
           class="cardImg rounded-xl w-full"
         />
       </a>
-      <button
-      id="${card.id}" class="addCard btn btn-square btn-secondary btn-outline border-hidden absolute top-10 left-6 hidden"
+      <label
+      id="${card.id}" for="my-modal-4" class="addCard btn btn-square btn-secondary btn-outline border-hidden absolute top-10 left-6 hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ function showCards(cardList) {
         >
           <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
         </svg>
-      </button>
+      </label>
     </div>`
 
     cardStrings += cardString
@@ -94,13 +94,6 @@ function showCards(cardList) {
         .then((addedCard) => {
           console.log(addedCard)
         })
-
-      // Toggle alert Div
-      const addAlert = document.querySelector(".addAlert")
-      addAlert.classList.remove("hidden")
-      setTimeout(() => {
-        addAlert.classList.add("hidden")
-      }, 2000)
     })
   })
 }
