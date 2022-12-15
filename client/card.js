@@ -1,5 +1,5 @@
 function showCardData(card) {
-  //console.log(card)
+  console.log(card)
   let imageURL
   let cardString = ``
   let price = ``
@@ -28,6 +28,9 @@ function showCardData(card) {
   // get card price and make button
   if (card.prices.usd) {
     price = card.prices.usd
+    priceBtn = `<a href="${tcgURL}"><button class="btn btn-success btn-outline">$${price}</button></a>`
+  } else {
+    price = card.prices.usd_foil
     priceBtn = `<a href="${tcgURL}"><button class="btn btn-success btn-outline">$${price}</button></a>`
   }
   if (card.image_uris) {
@@ -120,5 +123,4 @@ async function showCard() {
       showCardData(card)
     })
 }
-
 showCard()

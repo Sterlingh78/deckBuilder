@@ -2,14 +2,14 @@ const searchInput = document.querySelector(".searchInput")
 const searchBtn = document.querySelector(".searchBtn")
 const landBtn = document.querySelector(".landBtn")
 
-landBtn.addEventListener("click", (event) => {
+landBtn.addEventListener("click", async (event) => {
   const modal = document.querySelector(".addLand")
   const landInput = document.querySelector(".landInput")
   const deckID = localStorage.getItem("currentDeck")
 
   modal.classList.remove("modal-open")
 
-  fetch("/addLands", {
+  await fetch("/addLands", {
     method: "POST",
     body: JSON.stringify({
       deckID: `${deckID}`,
@@ -27,7 +27,7 @@ landBtn.addEventListener("click", (event) => {
 })
 
 searchBtn.addEventListener("click", async (event) => {
-  fetch(`/searchCards/`, {
+  await fetch(`/searchCards/`, {
     method: "POST",
     body: JSON.stringify({
       query: `${searchInput.value}`,
@@ -103,7 +103,7 @@ function showCards(cardList) {
     el.addEventListener("click", (event) => {
       localStorage.setItem("currentCard", cardBtn.id)
     })
-    cardBtn.addEventListener("click", (event) => {
+    cardBtn.addEventListener("click", async (event) => {
       for (const card of cardList) {
         if (cardBtn.id == card.id && card.type_line.includes("Basic Land")) {
           const modal = document.querySelector(".addLand")
@@ -113,7 +113,7 @@ function showCards(cardList) {
         }
       }
       console.log(event.target)
-      fetch("/addCard", {
+      await fetch("/addCard", {
         method: "POST",
         body: JSON.stringify({
           deckID: `${deckID}`,

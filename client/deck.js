@@ -1,6 +1,7 @@
 function showCards(deck) {
   const deckList = deck.deckList
-  //console.log(deckList)
+  console.log(deck)
+  console.log(deckList)
   let forestCount = 0
   let plainsCount = 0
   let mountainCount = 0
@@ -14,19 +15,44 @@ function showCards(deck) {
     let imageURL
     let drawerString = ``
 
-    if (deck.commander.image_uris) {
-      imageURL = deck.commander.image_uris.normal
-    } else if (deck.commander.card_faces) {
-      imageURL = deck.commander.card_faces[0].image_uris.normal
+    function getDeckPrice(deck) {
+      let deckPrice = 0
+      for (const card of deck.deckList) {
+        if (card.prices) {
+          if (card.prices.usd) {
+            let price = card.prices.usd
+            deckPrice = deckPrice + +price
+          } else {
+            let price = card.prices.usd_foil
+            deckPrice = deckPrice + +price
+          }
+        }
+      }
+      if (deck.commander && deck.commander.prices) {
+        if (deck.commander.prices.usd) {
+          deckPrice = deckPrice + +deck.commander.prices.usd
+        } else {
+          deckPrice = deckPrice + +deck.commander.prices.usd_foil
+        }
+      }
+      return deckPrice.toFixed(2)
     }
-    if (deck.commander.name) {
-      let cardCount = deck.deckList.length + 1
-      drawerString = `<img class="rounded-xl" src="${imageURL}" />
-      <h1 class="text-2xl font-bold m-2">${deck.commander.name}</h1>
-      <p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p><div class="flex">
-      <button class="btn btn-outline btn-success ml-1 w-1/2">
-    $369</button>
-      <button class="btn btn-primary ml-1 w-1/2">Export Deck</button></div>`
+
+    if (deck.commander) {
+      if (deck.commander.image_uris) {
+        imageURL = deck.commander.image_uris.normal
+      } else if (deck.commander.card_faces) {
+        imageURL = deck.commander.card_faces[0].image_uris.normal
+      }
+      if (deck.commander.name) {
+        let cardCount = deck.deckList.length + 1
+        drawerString = `<img class="rounded-xl" src="${imageURL}" />
+        <h1 class="text-2xl font-bold m-2">${deck.commander.name}</h1>
+        <p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p><div class="flex">
+        <button class="btn btn-outline btn-success ml-1 w-1/2">
+      $${getDeckPrice(deck)}</button>
+        <button class="btn btn-primary ml-1 w-1/2">Export Deck</button></div>`
+      }
     } else {
       let cardCount = deck.deckList.length
       drawerString = `<h1 class="text-2xl font-bold m-2">Add Commander to See Stats</h1><p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p>`
@@ -175,15 +201,6 @@ function showCards(deck) {
         })
     })
   })
-
-  /*
-  console.log("Creatures:", creatures)
-  console.log("Artifacts:", artifacts)
-  console.log("Enchantments:", enchantments)
-  console.log("Sorceries:", sorceries)
-  console.log("Instants:", instants)
-  console.log("Planeswalkers:", planeswalkers)
-  console.log("Lands:", lands)*/
 }
 
 async function getCards() {
