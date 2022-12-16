@@ -216,7 +216,7 @@ app.delete("/deleteDeck/:deckName", async (req, res) => {
   getDeckList(res)
 })
 
-app.post("/deleteCard", async (req, res) => {
+app.post("/deleteCard/", async (req, res) => {
   const deckID = req.body.deckID
   const cardID = req.body.cardID
   const deckObj = await deck.findOne({ _id: deckID })

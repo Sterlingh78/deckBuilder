@@ -204,7 +204,7 @@ function showCards(deck) {
     trashBtn.addEventListener("click", async (event) => {
       // make call to API to delete card from database
       const deckID = localStorage.getItem("currentDeck")
-      await fetch("/deleteCard", {
+      await fetch("/deleteCard/", {
         method: "POST",
         body: JSON.stringify({
           deckID: `${deckID}`,
