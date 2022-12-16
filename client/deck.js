@@ -18,13 +18,15 @@ function showCards(deck) {
     function getDeckPrice(deck) {
       let deckPrice = 0
       for (const card of deck.deckList) {
-        if (card.prices) {
-          if (card.prices.usd) {
-            let price = card.prices.usd
-            deckPrice = deckPrice + +price
-          } else {
-            let price = card.prices.usd_foil
-            deckPrice = deckPrice + +price
+        if (card) {
+          if (card.prices) {
+            if (card.prices.usd) {
+              let price = card.prices.usd
+              deckPrice = deckPrice + +price
+            } else {
+              let price = card.prices.usd_foil
+              deckPrice = deckPrice + +price
+            }
           }
         }
       }
