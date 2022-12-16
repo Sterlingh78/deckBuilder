@@ -127,6 +127,7 @@ app.post("/addCard", async (req, res) => {
     // Push new card
     await searchOneCard(cardID).then((card) => {
       deckObj.deckList.push(card)
+      res.json(card)
     })
 
     // Save deck

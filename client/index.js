@@ -96,6 +96,7 @@ async function showDeckList(deckList) {
     const trashBtn = el.childNodes[5]
     const parent = deckName.parentNode
 
+    // toggle trash and edit btns
     el.addEventListener("mouseenter", (event) => {
       deckName.classList.add("w-4/6")
       deckName.classList.remove("btn-block")

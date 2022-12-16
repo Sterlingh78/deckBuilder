@@ -51,7 +51,7 @@ function showCards(deck) {
         <p class="text-1xl font-bold m-2">Cards in Deck: ${cardCount}</p><div class="flex">
         <button class="btn btn-outline btn-success ml-1 w-1/2">
       $${getDeckPrice(deck)}</button>
-        <button class="btn btn-primary ml-1 w-1/2">Export Deck</button></div>`
+        <button class="disabled btn btn-primary ml-1 w-1/2">Export Deck</button></div>`
       }
     } else {
       let cardCount = deck.deckList.length
@@ -105,11 +105,14 @@ function showCards(deck) {
 
   //populate creatures
   function populateCards(type, arr) {
+    //sort array in alphabetical order
+    const alphabeticalArr = arr.sort((a, b) => a.name.localeCompare(b.name))
+
     let categoryString = ``
     let container = document.querySelector("." + type)
     let card = document.querySelector("." + type + "Card")
 
-    for (const card of arr) {
+    for (const card of alphabeticalArr) {
       const cardString = `<div id="${card.id}" class="cardDiv flex m-1 relative">
       <button class="cardName btn btn-block">
         ${card.name}

@@ -14,7 +14,7 @@ function showCardData(card) {
     card.type_line.includes("Legendary") &&
     card.type_line.includes("Creature")
   ) {
-    commanderBtnString = `<button class="commander btn btn-primary">Set Commander</button>`
+    commanderBtnString = `<label for="my-modal-4" class="commander btn btn-primary">Set Commander</label>`
   }
   if (card.oracle_text) {
     cardText = card.oracle_text

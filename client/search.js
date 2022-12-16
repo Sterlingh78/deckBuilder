@@ -2,6 +2,7 @@ const searchInput = document.querySelector(".searchInput")
 const searchBtn = document.querySelector(".searchBtn")
 const landBtn = document.querySelector(".landBtn")
 
+// add lands
 landBtn.addEventListener("click", async (event) => {
   const modal = document.querySelector(".addLand")
   const landInput = document.querySelector(".landInput")
@@ -22,10 +23,11 @@ landBtn.addEventListener("click", async (event) => {
   })
     .then((res) => res.json())
     .then((addedCard) => {
-      console.log(addedCard)
+      console.log("Land added:", addedCard)
     })
 })
 
+// search function
 searchBtn.addEventListener("click", async (event) => {
   await fetch(`/searchCards/`, {
     method: "POST",
@@ -38,7 +40,7 @@ searchBtn.addEventListener("click", async (event) => {
   })
     .then((res) => res.json())
     .then((cardObj) => {
-      //console.log(cardObj.data)
+      console.log("Search Done:", cardObj.data)
       showCards(cardObj.data)
     })
 })
@@ -46,7 +48,7 @@ searchBtn.addEventListener("click", async (event) => {
 // Page Build
 
 function showCards(cardList) {
-  console.log(cardList)
+  //console.log(cardList)
   const cardContainer = document.querySelector(".cardContainer")
   cardContainer.innerHTML = ""
 
@@ -94,6 +96,7 @@ function showCards(cardList) {
     const cardBtn = el.childNodes[3]
     const deckID = localStorage.getItem("currentDeck")
 
+    // make add btn appear/disappear
     el.addEventListener("mouseenter", (event) => {
       cardBtn.classList.remove("hidden")
     })
@@ -103,6 +106,7 @@ function showCards(cardList) {
     el.addEventListener("click", (event) => {
       localStorage.setItem("currentCard", cardBtn.id)
     })
+    // add basic lands
     cardBtn.addEventListener("click", async (event) => {
       for (const card of cardList) {
         if (cardBtn.id == card.id && card.type_line.includes("Basic Land")) {
@@ -125,7 +129,7 @@ function showCards(cardList) {
       })
         .then((res) => res.json())
         .then((addedCard) => {
-          console.log(addedCard)
+          console.log("Card Added:", addedCard)
         })
     })
   })
