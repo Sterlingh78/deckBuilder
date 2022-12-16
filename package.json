@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tailwind:css": "postcss client/src/input.css -o client/src/output.css",
-    "start": "npm run tailwind:css && nodemon server.js"
+    "start": "npm run tailwind:css && node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +16,6 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.8.0",
-    "nodemon": "^2.0.20",
     "postcss": "^8.4.19",
     "postcss-cli": "^10.1.0"
   },
