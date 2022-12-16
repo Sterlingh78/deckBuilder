@@ -1,5 +1,5 @@
 require("dotenv").config()
-import fetch from "node-fetch"
+import { fetch } from "node-fetch"
 const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
