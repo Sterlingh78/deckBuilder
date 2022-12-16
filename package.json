@@ -7,7 +7,6 @@
     "tailwind:css": "postcss client/src/input.css -o client/src/output.css",
     "start": "npm run tailwind:css && node server.js"
   },
-  "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
