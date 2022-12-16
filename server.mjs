@@ -4,7 +4,7 @@ import fetch from "node-fetch"
 import express from "express"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
-import deck from "./models/deck"
+import deck from "./models/deck.js"
 const app = express()
 const port = process.env.PORT
 //const port = 8000
