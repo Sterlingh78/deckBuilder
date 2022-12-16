@@ -1,10 +1,12 @@
 require("dotenv").config()
+import fetch from "node-fetch"
 const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const deck = require("./models/deck")
 const app = express()
-const port = process.env.PORT
+//const port = process.env.PORT
+const port = 8000
 
 app.use(express.static("client"))
 app.use(bodyParser.json())
