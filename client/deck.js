@@ -76,34 +76,46 @@ function showCards(deck) {
     }
   })
   const artifacts = deckList.filter((card) => {
-    if (
-      !card.type_line.includes("Creature") &&
-      !card.type_line.includes("Land")
-    ) {
-      return card.type_line.includes("Artifact")
+    if (card) {
+      if (
+        !card.type_line.includes("Creature") &&
+        !card.type_line.includes("Land")
+      ) {
+        return card.type_line.includes("Artifact")
+      }
     }
   })
   const enchantments = deckList.filter((card) => {
-    if (
-      !card.type_line.includes("Creature") &&
-      !card.type_line.includes("Artifact") &&
-      !card.type_line.includes("Land")
-    ) {
-      return card.type_line.includes("Enchantment")
+    if (card) {
+      if (
+        !card.type_line.includes("Creature") &&
+        !card.type_line.includes("Artifact") &&
+        !card.type_line.includes("Land")
+      ) {
+        return card.type_line.includes("Enchantment")
+      }
     }
   })
   const sorceries = deckList.filter((card) => {
-    return card.type_line.includes("Sorcery")
+    if (card) {
+      return card.type_line.includes("Sorcery")
+    }
   })
   const instants = deckList.filter((card) => {
-    return card.type_line.includes("Instant")
+    if (card) {
+      return card.type_line.includes("Instant")
+    }
   })
   const planeswalkers = deckList.filter((card) => {
-    return card.type_line.includes("Planeswalker")
+    if (card) {
+      return card.type_line.includes("Planeswalker")
+    }
   })
   const lands = deckList.filter((card) => {
-    if (!card.type_line.includes("Creature")) {
-      return card.type_line.includes("Land")
+    if (card) {
+      if (!card.type_line.includes("Creature")) {
+        return card.type_line.includes("Land")
+      }
     }
   })
 
