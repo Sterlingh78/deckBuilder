@@ -1,9 +1,10 @@
-require("dotenv").config()
+import * as dotenv from "dotenv"
+dotenv.config()
 import fetch from "node-fetch"
-const express = require("express")
-const bodyParser = require("body-parser")
-const mongoose = require("mongoose")
-const deck = require("./models/deck")
+import express from "express"
+import bodyParser from "body-parser"
+import mongoose from "mongoose"
+import deck from "./models/deck"
 const app = express()
 //const port = process.env.PORT
 const port = 8000
