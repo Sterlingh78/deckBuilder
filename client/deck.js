@@ -66,12 +66,14 @@ function showCards(deck) {
   // Sort cards into categories
 
   const creatures = deckList.filter((card) => {
-    if (
-      card.type_line.includes("Creature") ||
-      card.type_line.includes("Summon")
-    ) {
-      return true
-    } else return false
+    if (card) {
+      if (
+        card.type_line.includes("Creature") ||
+        card.type_line.includes("Summon")
+      ) {
+        return true
+      } else return false
+    }
   })
   const artifacts = deckList.filter((card) => {
     if (
