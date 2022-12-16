@@ -6,8 +6,8 @@ import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import deck from "./models/deck"
 const app = express()
-//const port = process.env.PORT
-const port = 8000
+const port = process.env.PORT
+//const port = 8000
 
 app.use(express.static("client"))
 app.use(bodyParser.json())
