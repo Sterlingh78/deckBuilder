@@ -4,7 +4,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const deck = require("./models/deck")
 const app = express()
-const port = 8000
+const port = process.env.PORT
 
 app.use(express.static("client"))
 app.use(bodyParser.json())
