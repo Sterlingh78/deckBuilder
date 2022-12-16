@@ -223,8 +223,10 @@ app.post("/deleteCard/", async (req, res) => {
   let cardDeck = deckObj.deckList
 
   for (let i = 0; i < cardDeck.length; i++) {
-    if (cardDeck[i].id == cardID) {
-      cardDeck.splice(i, 1)
+    if (cardDeck[i]) {
+      if (cardDeck[i].id == cardID) {
+        cardDeck.splice(i, 1)
+      }
     }
   }
 
