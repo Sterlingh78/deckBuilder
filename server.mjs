@@ -58,7 +58,7 @@ async function searchCards(query) {
 async function searchOneCard(cardID) {
   try {
     const response = await fetch(`https://api.scryfall.com/cards/${cardID}`)
-    card = await response.json()
+    let card = await response.json()
     return card
   } catch (err) {
     console.log(err)
