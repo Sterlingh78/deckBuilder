@@ -48,7 +48,7 @@ async function searchCards(query) {
     const response = await fetch(
       `https://api.scryfall.com/cards/search?order=name&q=${query}`
     )
-    results = await response.json()
+    let results = await response.json()
     return results
   } catch (err) {
     console.log(err)
